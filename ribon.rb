@@ -37,10 +37,14 @@ class Ribon
 
     if person
       @person_payments << PersonPayment.new(person, amount)
+
+      return c_debug(:green, "Donor #{person.name} donated $#{amount} USD cents")
     else
       new_person        = Person.new(name, amount)
       @people          << new_person
       @person_payments << PersonPayment.new(new_person, amount)
+
+      return c_debug(:green, "Donor #{new_person.name} was created and donated #{amount} USD cents")
     end
   end
 
@@ -49,6 +53,8 @@ class Ribon
 
     if donor
       @transaction_tags << TransactionTag.new(donor, non_profit, non_profit.default_ticket)
+
+      return c_debug(:green, "Donor #{donor.name} was chosen for #{non_profit.name} and donated #{non_profit.default_ticket} USD cents")
     else
       puts "No donors with enough funds available"
     end
