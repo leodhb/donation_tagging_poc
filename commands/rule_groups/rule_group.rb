@@ -8,6 +8,8 @@ class RuleGroup
     ObjectSpace.each_object(Class).select { |klass| klass < self }.sort_by { |klass| klass::PRIORITY }
   end
 
+  # there are some auxiliary methods. We need to move them to another place
+
   def big_donors
     @ribon.people.select do |person|
       person_payments(person).sum(&:amount) >= 10_000_00 && person_allowed?(person)
