@@ -34,3 +34,4 @@ end
 
 initialize_ribon
 # ribon.donate_to_fund "leod", 19_95
+# ribon.use_ticket ribon.non_profits.sample
